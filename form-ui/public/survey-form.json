@@ -1,0 +1,266 @@
+[
+  {
+    "key": "header",
+    "data-buildertype": "header",
+    "content": "STUDENT SURVEY",
+    "size": "large",
+    "subheader": "Quaterly student survey ",
+    "textAlign": "center",
+    "style-source": "color: grey;",
+    "events": {}
+  },
+  {
+    "key": "school-name",
+    "data-buildertype": "input",
+    "label": "School Name",
+    "fluid": true,
+    "onChangeTimeout": 200,
+    "placeholder": "Kenyatta University",
+    "events": {
+      "onChange": {
+        "active": false,
+        "triggers": [
+          {
+            "actions": [],
+            "parameters": [
+              {
+                "name": "",
+                "value": ""
+              }
+            ],
+            "targets": []
+          }
+        ]
+      }
+    },
+    "style-source": "color: grey;",
+    "style-adaptive": true,
+    "style-mobilesource": "color: grey;",
+    "other-required": false
+  },
+  {
+    "key": "first-name",
+    "data-buildertype": "input",
+    "label": "First Name",
+    "fluid": true,
+    "onChangeTimeout": 200,
+    "placeholder": "Eunice",
+    "style-source": "color: grey;",
+    "style-width": "",
+    "style-adaptive": true,
+    "events": {
+      "onChange": {
+        "active": true,
+        "triggers": [
+          {
+            "actions": [],
+            "parameters": [
+              {
+                "name": "",
+                "value": ""
+              }
+            ],
+            "targets": []
+          },
+          {
+            "actions": [],
+            "targets": [],
+            "parameters": [
+              {
+                "name": "",
+                "value": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "last-name",
+    "data-buildertype": "input",
+    "label": "Last Name",
+    "fluid": true,
+    "onChangeTimeout": 200,
+    "placeholder": "Atieno",
+    "style-source": "color: grey;",
+    "style-adaptive": true,
+    "events": {
+      "onChange": {
+        "active": false,
+        "triggers": [
+          {
+            "actions": [],
+            "parameters": [
+              {
+                "name": "",
+                "value": ""
+              }
+            ],
+            "targets": []
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "date",
+    "data-buildertype": "input",
+    "label": "Date",
+    "fluid": true,
+    "onChangeTimeout": 200,
+    "type": "date",
+    "placeholder": "2021/3/2",
+    "style-source": "color: grey;",
+    "style-adaptive": true,
+    "style-width": "200px",
+    "events": {
+      "onChange": {
+        "active": false,
+        "triggers": [
+          {
+            "actions": [],
+            "parameters": [
+              {
+                "name": "",
+                "value": ""
+              }
+            ],
+            "targets": []
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "studentDuration",
+    "data-buildertype": "dropdown",
+    "label": "How long have you been a student here?",
+    "fluid": true,
+    "selection": true,
+    "data-elements": [
+      {
+        "value": 1,
+        "text": "0-1 year"
+      },
+      {
+        "value": 2,
+        "text": "2 years"
+      },
+      {
+        "value": 3,
+        "text": "3 years"
+      },
+      {
+        "__id": "CLIENT_9524b0f0-2348-11ec-a4fd-495d00b55bc9",
+        "text": "4 years and more"
+      }
+    ],
+    "placeholder": "0 years",
+    "style-source": "color: grey;",
+    "style-adaptive": true
+  },
+  {
+    "key": "recommendationReasons",
+    "data-buildertype": "radiogroup",
+    "label": "How likely are you to recommend our school to a friend or family?",
+    "data-elements": [
+      {
+        "value": 1,
+        "text": "Very likely"
+      },
+      {
+        "value": 2,
+        "text": "Somewhat likely"
+      },
+      {
+        "value": 3,
+        "text": "Unsure"
+      },
+      {
+        "__id": "CLIENT_21ad6800-2349-11ec-a4fd-495d00b55bc9",
+        "text": "Not very likely",
+        "value": "4"
+      },
+      {
+        "__id": "CLIENT_2ecf8720-2349-11ec-a4fd-495d00b55bc9",
+        "text": "Not likely",
+        "value": "5"
+      }
+    ],
+    "direction": "v",
+    "style-source": "color: grey;",
+    "style-adaptive": true,
+    "events": {
+      "onChange": {
+        "active": false,
+        "triggers": [
+          {
+            "actions": [],
+            "parameters": [
+              {
+                "name": "",
+                "value": ""
+              }
+            ],
+            "targets": []
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "whyReasons",
+    "data-buildertype": "textarea",
+    "label": "If not, why?",
+    "fluid": true,
+    "style-source": "color: grey;",
+    "style-adaptive": true
+  },
+  {
+    "key": "comments",
+    "data-buildertype": "textarea",
+    "label": "Comments",
+    "fluid": true,
+    "style-source": "color: grey;",
+    "style-adaptive": true
+  },
+  {
+    "key": "submit",
+    "data-buildertype": "button",
+    "content": "Submit",
+    "style-source": "color: green;",
+    "style-adaptive": true,
+    "events": {
+      "onClick": {
+        "active": true,
+        "triggers": [
+          {
+            "actions": [
+              "save"
+            ],
+            "parameters": [
+              {
+                "name": "survey",
+                "value": "data"
+              }
+            ],
+            "targets": [
+              "school-name",
+              "first-name",
+              "last-name",
+              "date",
+              "studentDuration",
+              "recommendationReasons",
+              "whyReasons",
+              "comments"
+            ]
+          },
+          {
+            "__id": "CLIENT_44be14f0-234b-11ec-a4fd-495d00b55bc9"
+          }
+        ]
+      }
+    }
+  }
+]

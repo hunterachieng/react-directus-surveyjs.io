@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "formbuilder": "https://github.com/optimajet/formbuilder.git"
+  }
+}

@@ -1,0 +1,50 @@
+version: "3"
+
+networks:
+  directus:
+
+services:
+  form-ui:
+    image: node:14.17.3-buster    
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    volumes:
+      - './form-ui:/app'
+      - '/app/node_modules'
+    ports:
+      - 3004:3000
+    
+     
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+    ports:
+      - 3306
+    networks:
+      - directus
+
+  directus:
+    image:  directus/directus:v8-apache
+    ports:
+      - "8081:80"
+    environment:
+      DIRECTUS_APP_ENV: ${APP_ENV}
+      DIRECTUS_AUTH_PUBLICKEY: "secretive something"
+      DIRECTUS_AUTH_SECRETKEY: "secrets"
+      DIRECTUS_DATABASE_HOST: "mysql"
+      DIRECTUS_DATABASE_PORT: ${DB_PORT}
+      DIRECTUS_DATABASE_NAME: ${DB_NAME}
+      DIRECTUS_DATABASE_USERNAME: ${DB_USER}
+      DIRECTUS_DATABASE_PASSWORD: ${DB_PASS}
+       
+    volumes:
+      - ./data/config:/var/directus/config
+      - ./data/uploads:/var/directus/public/uploads   
+    
+    networks:
+      - directus
