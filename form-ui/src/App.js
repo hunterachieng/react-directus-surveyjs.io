@@ -35,26 +35,31 @@ class App extends Component{
 
   
    onComplete(survey, options) {
-     var request = {
-       method: 'POST',
-       headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify(survey.data)
-     };
+var surveyResponse = {
+  "response_json":[
+   survey.data
+  ]
+}
 
-     fetch("http://127.0.0.1:8081/response/items/response?fields=response_json", request)
-     .then(async response => {
-      const isJson = response.headers.get('content-type')?.includes('application/json');
-      const result = isJson && await response.json();
+  var request = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(surveyResponse)
+  };
 
-      // check for error response
-      if (!response.ok) {
-          // get error message from body or default to response status
-          const error = (result && result.message) || response.status;
-          return Promise.reject(error);
-      }
+  fetch("http://127.0.0.1:8081/response/items/response", request)
+  .then(async response => {
+  const isJson = response.headers.get('content-type')?.includes('application/json');
+  const result = isJson && await response.json();
 
-      this.setState({ responseId: result.data.id })
-  })
+  // check for error response
+  if (!response.ok) {
+      // get error message from body or default to response status
+      const error = (response && response.message) || response.status;
+      return Promise.reject(error);
+  }
+
+    })
   .catch(error => {
     // this.setState({ errorMessage: error.toString() });
     console.error('There was an error!', error);
